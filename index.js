@@ -7,6 +7,7 @@ const authRoute = require("./Routes").auth;
 const courseRoute = require("./Routes").course;
 const passport = require("passport");
 require("./config/passport")(passport);
+const cors = require("cors");
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION)
@@ -20,7 +21,7 @@ mongoose
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors());
 app.use("/api/user", authRoute);
 
 //courseRoute應該被jwt保護，若request無jwt會被視為unauthorization
