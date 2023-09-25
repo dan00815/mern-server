@@ -7,7 +7,6 @@ const authRoute = require("./Routes").auth;
 const courseRoute = require("./Routes").course;
 const passport = require("passport");
 require("./config/passport")(passport);
-const cors = require("cors");
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION)
